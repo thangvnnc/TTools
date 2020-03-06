@@ -1,13 +1,15 @@
+'use strict';
 const express = require('express')
 const sqlFormatter = require('sql-formatter');
 const app = express();
 const bodyParser = require('body-parser');
-const chromeLauncher = require('chrome-launcher');
+// const chromeLauncher = require('chrome-launcher');
 const PORT = process.env.PORT || 9999;
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, function(err) {
     if (err) {

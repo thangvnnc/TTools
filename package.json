@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-codesupport",
+  "name": "codesupport",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,15 +7,22 @@
     "start": "node .\\index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thangvnnc/ttools.git"
+  },
   "engines": {
     "node": "10.x"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thangvnnc/loans2go/issues"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "chrome-launcher": "^0.13.0",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "sql-formatter": "^2.3.3"
   }
 }

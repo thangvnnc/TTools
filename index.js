@@ -3,7 +3,7 @@ const express = require('express')
 const sqlFormatter = require('sql-formatter');
 const app = express();
 const bodyParser = require('body-parser');
-// const chromeLauncher = require('chrome-launcher');
+const chromeLauncher = require('chrome-launcher');
 const PORT = process.env.PORT || 9999;
 const path = require('path');
 
@@ -19,11 +19,11 @@ app.listen(PORT, function(err) {
 
     console.log('Server started in port: ' + PORT);
     
-    // chromeLauncher.launch({
-    //     startingUrl: 'http://localhost:'+PORT
-    // }).then(chrome => {
-    //     console.log(`Chrome debugging port running on ${chrome.port}`);
-    // });
+    chromeLauncher.launch({
+        startingUrl: 'http://localhost:'+PORT
+    }).then(chrome => {
+        console.log(`Chrome debugging port running on ${chrome.port}`);
+    });
 })
 
 app.post('/sql/build', function (req, res) {

@@ -9,10 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {
-      height: 1500px
-    }
 
     /* Set gray background color and 100% height */
     .sidenav {
@@ -100,7 +96,7 @@
               // Create data example
               // $('#sql-ip-start').val("$sql .= \"");
               // $('#sql-ip-end').val("\";");
-              // $('#sql-req-content').val("SELECT id, title, add, upd FROM table1 tb1 JOIN table2 tb2 ON tb1.ID = tb2.ID AND tb1.Add = tb2.Add WHERE ID IN (SELECT ID FROM table3 tb3 WHERE tb3 = 2)");
+              $('#sql-req-content').val("SELECT DISTINCT u.id, u.content FROM `User` u inner join User u2 ON u.id = u2.id WHERE id in (SELECT id FROM DEF join User u2 ON u.id = u2.id) GROUP BY u.id HAVING u.id>0 LIMIT 0,5");
               
               $("#sql-btn-build").on('click', function (e) {
                 let startSql = $('#sql-ip-start').val();

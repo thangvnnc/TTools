@@ -20,7 +20,7 @@ app.listen(PORT, function(err) {
     console.log('Server started in port: ' + PORT);
     
     chromeLauncher.launch({
-        startingUrl: 'http://localhost:'+PORT
+        startingUrl: 'http://localhost:'+PORT+'/autocomplete.html'
     }).then(chrome => {
         console.log(`Chrome debugging port running on ${chrome.port}`);
     });
@@ -46,6 +46,19 @@ app.post('/sql/build', function (req, res) {
     }
 
     res.send(result);
+});
+
+app.post('/code/search', function (req, res) {
+    let data = req.body;
+    let text = data.text;
+
+    let results = {
+        id: 1,
+        lable: "asdasd",
+        value: 1245
+    }
+
+    res.send(results);
 });
 
 function formatSql(sql, indent) {

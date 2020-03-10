@@ -50,9 +50,13 @@
               aria-selected="true">SQL Builder</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="ios-template-tab" data-toggle="tab" href="#ios-template" role="tab" aria-controls="ios-template"
-              aria-selected="false">IOS Template</a>
+            <a class="nav-link" id="code-tab" data-toggle="tab" href="#code" role="tab" aria-controls="code"
+              aria-selected="false">Code</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" id="template-javascript-tab" data-toggle="tab" href="#template-javascript" role="tab" aria-controls="template-javascript"
+              aria-selected="false">Template Javascript</a>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" id="example-tab" data-toggle="tab" href="#example" role="tab" aria-controls="example"
               aria-selected="false">Example</a>
@@ -86,8 +90,8 @@
                 <textarea id="sql-req-content" class="form-control sql-textarea" rows="10" required></textarea>
               </div>
               <div class="form-group col-sm-12">
-                <div><input id="ip-chk-auto-copy" type="checkbox" />Tự động copy</div>
-                <div><input id="ip-chk-auto-select-all" type="checkbox" checked/>Tự động chọn tất cả văn bản khi có kết quả</div>
+                <div><label><input id="sql-ip-chk-auto-copy" type="checkbox" />Tự động copy</label></div>
+                <div><label><input id="sql-ip-chk-auto-select-all" type="checkbox" checked/>Tự động chọn tất cả văn bản khi có kết quả</label></div>
                 <label for="sql-res-content">Câu đã chuyển đổi:</label>
                 <textarea id="sql-res-content" class="form-control sql-textarea" rows="20" required></textarea>
               </div>
@@ -96,7 +100,7 @@
               // Create data example
               // $('#sql-ip-start').val("$sql .= \"");
               // $('#sql-ip-end').val("\";");
-              $('#sql-req-content').val("SELECT DISTINCT u.id, u.content FROM `User` u inner join User u2 ON u.id = u2.id WHERE id in (SELECT id FROM DEF join User u2 ON u.id = u2.id) GROUP BY u.id HAVING u.id>0 LIMIT 0,5");
+              // $('#sql-req-content').val("SELECT DISTINCT u.id, u.content FROM `User` u inner join User u2 ON u.id = u2.id WHERE id in (SELECT id FROM DEF join User u2 ON u.id = u2.id) GROUP BY u.id HAVING u.id>0 LIMIT 0,5");
               
               $("#sql-btn-build").on('click', function (e) {
                 let startSql = $('#sql-ip-start').val();
@@ -122,12 +126,12 @@
 
                       $('#sql-res-content').val(res.content);
                       
-                      if ($("#ip-chk-auto-select-all").is(":checked")) {
+                      if ($("#sql-ip-chk-auto-select-all").is(":checked")) {
                         $('#sql-res-content').focus();
                         $('#sql-res-content').select();
                       }
 
-                      if ($("#ip-chk-auto-copy").is(":checked")) {
+                      if ($("#sql-ip-chk-auto-copy").is(":checked")) {
                         $('#sql-res-content').focus();
                         $('#sql-res-content').select();
                         document.execCommand('copy');
@@ -142,11 +146,29 @@
             </script>
           </div>
         </div>
-        <div class="tab-pane fade" id="ios-template" role="tabpanel" aria-labelledby="ios-template-tab">
+        <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">
           <div class="col-sm-10">
-            <h3>IOS Template</h3>
+            <h3>Code</h3>
+            <div class="form-row">
+              <div class="form-group col-sm-12">
+                <label for="code-ip-search">Tìm kiếm</label>
+                <input type="text" class="form-control" id="code-ip-search" placeholder="Bắt đầu">
+              </div>
+              <div class="form-group col-sm-12">
+                <label for="sql-res-content">Câu đã chuyển đổi:</label>
+                <textarea id="sql-res-content" class="form-control sql-textarea" rows="20" required></textarea>
+              </div>
+            </div>
+            <script>
+            </script>
           </div>
         </div>
+        <!-- <div class="tab-pane fade" id="template-javascript" role="tabpanel" aria-labelledby="template-javascript-tab">
+          <div class="col-sm-10">
+            <h3>Template Javascript</h3>
+            <textarea rows="2"></textarea>
+          </div>
+        </div> -->
         <div class="tab-pane fade" id="example" role="tabpanel" aria-labelledby="example-tab">
           <div class="col-sm-10">
             <h3>Page Example</h3>
